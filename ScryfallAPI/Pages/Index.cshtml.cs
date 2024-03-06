@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ScryfallAPI.Models;
 using ScryfallAPI.Utilities;
+using System.Linq.Expressions;
 using System.Security.Claims;
 
 namespace ScryfallAPI.Pages
@@ -24,19 +25,13 @@ namespace ScryfallAPI.Pages
 
         }
 
-        [BindProperty]
-        public FavoriteCards? FavoriteCards { get; set; }
-
 		public void OnPostSend(string name, int pennyRank, string releasedDate)
 		{
 			using ILoggerFactory loggerFactory = LoggerFactory.Create(b => b.AddConsole());
 			ILogger logger = loggerFactory.CreateLogger<IndexModel>();
 			var retrievingClaims = User.Claims.FirstOrDefault(c => c.Type == "UserId");
 			string returnUrl = "https://localhost:7223/index";
-			//if(favorite is not null)
-			//{
-			//ScryfallContext scryfallContext = new ScryfallContext();
-			//FavoriteCards!.FavoriteCard = favorite.FavoriteCard;
+		
 			FavoriteCards favoriteCards = new FavoriteCards()
 			{
 				IsFavorite = true,
@@ -47,7 +42,7 @@ namespace ScryfallAPI.Pages
 			};
 			_context.Favorites.Add(favoriteCards);
 			_context.SaveChanges();
-			//}
+
 			logger.LogInformation($"{favoriteCards.Name} marked as favorite in the db");
 
 			Redirect(returnUrl);

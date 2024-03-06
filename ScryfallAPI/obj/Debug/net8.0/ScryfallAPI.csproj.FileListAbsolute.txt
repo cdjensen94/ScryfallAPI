@@ -138,3 +138,4 @@ C:\Users\lamin\OneDrive\Desktop\ScryfallAPI\ScryfallAPI\obj\Debug\net8.0\refint\
 C:\Users\lamin\OneDrive\Desktop\ScryfallAPI\ScryfallAPI\obj\Debug\net8.0\ScryfallAPI.pdb
 C:\Users\lamin\OneDrive\Desktop\ScryfallAPI\ScryfallAPI\obj\Debug\net8.0\ScryfallAPI.genruntimeconfig.cache
 C:\Users\lamin\OneDrive\Desktop\ScryfallAPI\ScryfallAPI\obj\Debug\net8.0\ref\ScryfallAPI.dll
+C:\Users\lamin\OneDrive\Desktop\ScryfallAPI\ScryfallAPI\obj\Debug\net8.0\ScryfallAPI.sourcelink.json

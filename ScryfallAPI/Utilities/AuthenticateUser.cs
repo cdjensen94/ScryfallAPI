@@ -41,10 +41,6 @@ namespace ScryfallAPI.Utilities
 						newUser.Id = u.Id;
 					}
 				});
-			//var userExist = _context.Users
-			//	.Where(u => u.Email == email)
-			//	.FirstOrDefault();
-
 
 			return newUser;
 			

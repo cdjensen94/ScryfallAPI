@@ -3,8 +3,7 @@
 @using ScryfallAPI.Models
 @model ScryfallAPI.Pages.IndexModel
 @{
-	var dataList = await ScryfallAPI.Utilities.APIRetriever.GetData();
-}
+	var dataList = await ScryfallAPI.Utilities.APIRetriever.GetData();}
 <html>
 <head>
 	<!-- Required meta tags -->
@@ -41,10 +40,10 @@
 							
 							<form asp-page-handler="Send" method="post" >
 								<input type="hidden" name="id" value="@cards.id"></input>
-								<input type="hidden" name="releaseDate" value="@cards.released_at"></input>
+								<input type="hidden" name="releasedDate" value="@cards.released_at"></input>
 								<input type="hidden" name="pennyRank" value="@cards.penny_rank"></input>
 								<input type="hidden" name="name" value="@cards.name"></input>
-								<button type="submit" class="btn btn-primary">Send</button>
+								<button type="submit" class="btn btn-primary">Favorite</button>
 								
 							</form>
 			
