@@ -1,0 +1,79 @@
+﻿@page "{handler?}"
+@using ScryfallAPI
+@using ScryfallAPI.Models
+@model ScryfallAPI.Pages.IndexModel
+@{
+	var dataList = await ScryfallAPI.Utilities.APIRetriever.GetData();
+}
+<html>
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<h1 class="title">Scryfall Cards:</h1>
+
+	@foreach(var item in dataList)
+	{
+		@if (item.Data is not null)
+		{
+			@foreach (var cards in item.Data)
+			{
+				<table class="table table-striped table-hover">
+				<tr>
+					<th><bold>Card Id</bold> </th>
+					<th><bold>Released Date</bold>&nbsp;</th>
+					<th><bold>Penny Rank</bold></th>
+					<th><bold>Name</bold></th>
+					</tr>
+				<tr>
+					<td> @cards.id </td>
+					<td> @cards.released_at </td>
+					<td> @cards.penny_rank</td>
+					<td> @cards.name</td>
+						<td>
+							
+							<form asp-page-handler="Send" method="post" >
+								<input type="hidden" name="id" value="@cards.id"></input>
+								<input type="hidden" name="releaseDate" value="@cards.released_at"></input>
+								<input type="hidden" name="pennyRank" value="@cards.penny_rank"></input>
+								<input type="hidden" name="name" value="@cards.name"></input>
+								<button type="submit" class="btn btn-primary">Send</button>
+								
+							</form>
+			
+						</td>
+			</tr>
+			</table>
+		}
+	}	
+}
+</body>
+
+<style>
+	.title{
+		margin-top: 2%;
+		margin-right: 5%;
+		display:flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.table-striped
+	{
+		margin-top: 10%;
+		width: 50%;
+		align-items: center;
+		margin-left: 30%;
+	}
+
+</style>
+	
+
+</html>
