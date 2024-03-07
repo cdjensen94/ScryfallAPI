@@ -25,47 +25,21 @@ namespace ScryfallAPI.Pages
 
         }
 
-		public User GetUser(int  id) 
-		{ 
-			var searching =  _context.Users.Where(u => u.Id == id)
-										   .FirstOrDefault();
-
-			_context.Entry(searching).State = EntityState.Detached;
-
-			return searching ?? new User { Email = ""};
-		}
-
 		public void OnPostSend(string name, int pennyRank, string releasedDate)
 		{
 			using ILoggerFactory loggerFactory = LoggerFactory.Create(b => b.AddConsole());
 			ILogger logger = loggerFactory.CreateLogger<IndexModel>();
 			var retrievingClaims = User.Claims.FirstOrDefault(c => c.Type == "UserId");
 			string returnUrl = "https://localhost:7223/index";
-			var searchingForUser = GetUser(Convert.ToInt32(retrievingClaims.Value));
-			User user = new()
-			{
-				Email = ""
-			};
-
-			if(searchingForUser is not null )
-			{
-				user.Email = searchingForUser.Email;
-				user.Id = searchingForUser.Id;
-			}
-
+		
 			FavoriteCards favoriteCards = new FavoriteCards()
 			{
 				IsFavorite = true,
 				Name = name,
 				PennyRank = pennyRank,
 				ReleasedAt = releasedDate,
-				UserId = Convert.ToInt32(retrievingClaims?.Value),
-				User = user
+				UserId = Convert.ToInt32(retrievingClaims?.Value)
 			};
-
-			user.Favorites = new List<FavoriteCards> { favoriteCards };
-			favoriteCards.User.Favorites = user.Favorites;
-			_context.Entry(favoriteCards).State = EntityState.Modified;
 			_context.Favorites.Add(favoriteCards);
 			_context.SaveChanges();
 

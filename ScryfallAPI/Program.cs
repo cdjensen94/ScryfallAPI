@@ -8,12 +8,14 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
+ConfigurationBuilder configurationBuilder = new();
+IConfigurationRoot configuration = configurationBuilder.Build();
 
 // Add services to the container.
 builder.Services.AddDbContext<ScryfallContext>(opt =>
-    opt.UseSqlServer(connectionString: builder
-                                        .Configuration
-                                        .GetConnectionString("ScryFallConnection")
+    opt.UseSqlServer(connectionString: "data source=LAPTOP-NMJCSUQD\\SQLEXPRESS;initial catalog=Scryfall;trusted_connection=true;TrustServerCertificate=True "
+	//configuration.GetSection("ScryFallConnection").
+	//              GetConnectionString("ScryFallConnection")
 	));
 builder.Services.AddHttpClient<APIRetriever>();
 builder.Services.AddRazorPages();
