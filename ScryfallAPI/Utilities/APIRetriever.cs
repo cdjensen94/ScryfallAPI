@@ -1,18 +1,23 @@
 ﻿using Newtonsoft.Json;
+using ScryfallAPI.Pages;
 using System.Numerics;
 namespace ScryfallAPI.Utilities
 {
     public class APIRetriever
     {
-        
+
         public APIRetriever() 
         {
                
         }
 
+        //Retrieving API data using HttpClient
         public static async Task<List<ModelToParse>> GetData()
         {
-            try
+			using ILoggerFactory loggerFactory = LoggerFactory.Create(b => b.AddConsole());
+			ILogger logger = loggerFactory.CreateLogger<APIRetriever>();
+
+			try
             {
                 var url = $"https://api.scryfall.com/cards/search?q=b%3Ausg";
                 ModelToParse model = new();
@@ -35,6 +40,8 @@ namespace ScryfallAPI.Utilities
                             model.has_more = dataRetrieved.has_more;
                             model.next_page = dataRetrieved.next_page;
                             model.total_cards = dataRetrieved.total_cards;
+                            
+                            //Getting cards that have a higher penny rank, in this case over 8000
                             model.Data = dataRetrieved.Data.Where(p => p.penny_rank >= 8000)
                                                            .OrderByDescending(p => p.penny_rank)
                                                            .ToList();
@@ -50,7 +57,8 @@ namespace ScryfallAPI.Utilities
             }
             catch (Exception ex)
             {
-                return null;
+                logger.LogError($"Error retrieving data, creating an empty list, error {ex.InnerException.Message}");
+                return new List<ModelToParse>();
             }
         }
 
