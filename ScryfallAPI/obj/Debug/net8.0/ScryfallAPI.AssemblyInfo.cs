@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScryfallAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7dcd17a733f9ab206f083eeb455fde140fff7989")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4bb6b4ab40946c0f684a55717a1e2c37dda2d670")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScryfallAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScryfallAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
