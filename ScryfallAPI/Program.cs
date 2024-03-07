@@ -60,16 +60,27 @@ app.MapGet("/cards", async (ScryfallContext context) =>
 
 app.MapGet("cards/{id}", async (int id, ScryfallContext context) =>
 {
-    return await context.Favorites.Where(f => f.Id == id).ToListAsync();
-});
+    var found = await context.Favorites.Where(f => f.Id == id).ToListAsync();
+    
+    if(found is not null)
+        return found;
+
+    return null;
+    
+}).RequireAuthorization("AdminPolicy");
 
 app.MapPost("cards", async (FavoriteCards favorite, ScryfallContext context) =>
 {
-    await context.Favorites.AddAsync(favorite);
-    await context.SaveChangesAsync();
+    if (favorite is not null)
+    {
+        await context.Favorites.AddAsync(favorite);
+        await context.SaveChangesAsync();
+		return Results.Created();
+	}
 
-    return Results.Created();
-});
+	return Results.BadRequest();
+
+}).RequireAuthorization("AdminPolicy");
 
 app.MapDelete("cards/{id}", async (int id, ScryfallContext context) =>
 {
@@ -83,7 +94,7 @@ app.MapDelete("cards/{id}", async (int id, ScryfallContext context) =>
     }
 
     return Results.NoContent();
-});
+}).RequireAuthorization("AdminPolicy");
 
 app.MapPut("cards/{id}", async (int id, FavoriteCards favorite , ScryfallContext context) =>
 {
@@ -101,7 +112,7 @@ app.MapPut("cards/{id}", async (int id, FavoriteCards favorite , ScryfallContext
 
     return Results.NoContent();
 
-});
+}).RequireAuthorization("AdminPolicy");
 #endregion
 
 app.MapRazorPages();
