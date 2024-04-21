@@ -50,7 +50,7 @@ namespace ScryfallAPI.Utilities
                         }
                     }
 
-                    return listModel ?? new List<ModelToParse>();
+                    return listModel;
 
                     
                 }

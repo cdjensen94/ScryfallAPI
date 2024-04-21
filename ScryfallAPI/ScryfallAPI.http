@@ -1,6 +1,6 @@
 @ScryfallAPI_HostAddress = http://localhost:5172
 
-GET {{ScryfallAPI_HostAddress}}/weatherforecast/
+GET {{ScryfallAPI_HostAddress}}/cards/
 Accept: application/json
 
 ###
