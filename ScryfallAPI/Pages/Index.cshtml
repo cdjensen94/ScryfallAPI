@@ -24,12 +24,15 @@
 			@foreach (var cards in item.Data)
 			{
 				<table class="table table-striped table-hover">
+					<thead class="thead-dark">
 				<tr>
 					<th><bold>Card Id</bold> </th>
 					<th><bold>Released Date</bold>&nbsp;</th>
 					<th><bold>Penny Rank</bold></th>
 					<th><bold>Name</bold></th>
+					<th><bold>Mark</bold></th>
 					</tr>
+					</thead>
 				<tr>
 					<td> @cards.id </td>
 					<td> @cards.released_at </td>
@@ -57,7 +60,6 @@
 <style>
 	.title{
 		margin-top: 2%;
-		margin-right: 5%;
 		display:flex;
 		justify-content: center;
 		align-items: center;
@@ -65,10 +67,8 @@
 
 	.table-striped
 	{
-		margin-top: 10%;
-		width: 50%;
-		align-items: center;
-		margin-left: 30%;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 </style>

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ScryfallAPI.Pages;
+using System.Net.Http.Headers;
 using System.Numerics;
 namespace ScryfallAPI.Utilities
 {
@@ -19,11 +20,12 @@ namespace ScryfallAPI.Utilities
 
 			try
             {
-                var url = $"https://api.scryfall.com/cards/search?q=b%3Ausg";
+                var url = "https://api.scryfall.com/cards/search?q=b%3Ausg";
                 ModelToParse model = new();
                 List<ModelToParse> listModel = new();
                 using var client = new HttpClient();
-                using Stream stream = await client.GetStreamAsync(url);
+                client.DefaultRequestHeaders.Add("User-Agent", "Accept");
+				using Stream stream = await client.GetStreamAsync(url);
                 using StreamReader streamReader = new StreamReader(stream);
                 using (JsonTextReader reader = new JsonTextReader(streamReader)) 
                 {
@@ -36,14 +38,19 @@ namespace ScryfallAPI.Utilities
                             //Retrieving data and deserialzing it
                             ModelToParse dataRetrieved = serializer.Deserialize<ModelToParse>(reader);
                       
+                            
+                            //Parsing retrieved data to model data
                             model.Object = dataRetrieved.Object;
                             model.has_more = dataRetrieved.has_more;
                             model.next_page = dataRetrieved.next_page;
                             model.total_cards = dataRetrieved.total_cards;
                             
-                            //Getting cards that have a higher penny rank, in this case over 8000
+                            /*Getting cards that have a higher penny rank, in this case over 8000
+                             * limiting size to 30 results for a faster query operation
+                             */
                             model.Data = dataRetrieved.Data.Where(p => p.penny_rank >= 8000)
                                                            .OrderByDescending(p => p.penny_rank)
+                                                           .Take(30)
                                                            .ToList();
                             listModel.Add(model);
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lamin\\OneDrive\\Desktop\\ScryfallAPI\\ScryfallAPI\\ScryfallAPI.csproj": {}
+    "C:\\Users\\lamin\\source\\repos\\ScryfallAPI2\\ScryfallAPI\\ScryfallAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lamin\\OneDrive\\Desktop\\ScryfallAPI\\ScryfallAPI\\ScryfallAPI.csproj": {
+    "C:\\Users\\lamin\\source\\repos\\ScryfallAPI2\\ScryfallAPI\\ScryfallAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lamin\\OneDrive\\Desktop\\ScryfallAPI\\ScryfallAPI\\ScryfallAPI.csproj",
+        "projectUniqueName": "C:\\Users\\lamin\\source\\repos\\ScryfallAPI2\\ScryfallAPI\\ScryfallAPI.csproj",
         "projectName": "ScryfallAPI",
-        "projectPath": "C:\\Users\\lamin\\OneDrive\\Desktop\\ScryfallAPI\\ScryfallAPI\\ScryfallAPI.csproj",
+        "projectPath": "C:\\Users\\lamin\\source\\repos\\ScryfallAPI2\\ScryfallAPI\\ScryfallAPI.csproj",
         "packagesPath": "C:\\Users\\lamin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lamin\\OneDrive\\Desktop\\ScryfallAPI\\ScryfallAPI\\obj\\",
+        "outputPath": "C:\\Users\\lamin\\source\\repos\\ScryfallAPI2\\ScryfallAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lamin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -47,27 +48,27 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
@@ -79,7 +80,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.7.1, )"
             },
             "bootstrap": {
               "target": "Package",
@@ -105,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
