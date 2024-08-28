@@ -1,7 +1,7 @@
 # ScryfallAPI
 A .NET 8 API Service connecting remotely to retrieve data
 
-#First step before launching the application
+# First step before launching the application
 Before launching the application the first time, it's important to use the provided .bak file to restore the tables into a SQL Server Database so APIs calls on Swagger will work and also to find saved cards marked as favorites, as well as the users table.
 
 # How it works?
