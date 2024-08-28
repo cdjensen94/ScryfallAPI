@@ -30,7 +30,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
            {
                OnRedirectToLogin = (context) =>
                {
-                   context.HttpContext.Response.Redirect("https://localhost:7223/login");
+                   context.HttpContext.Response.Redirect("https://localhost:7224/login");
                    return Task.CompletedTask;
                }
            };

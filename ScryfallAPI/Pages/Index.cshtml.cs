@@ -40,7 +40,7 @@ namespace ScryfallAPI.Pages
 			using ILoggerFactory loggerFactory = LoggerFactory.Create(b => b.AddConsole());
 			ILogger logger = loggerFactory.CreateLogger<IndexModel>();
 			var retrievingClaims = User.Claims.FirstOrDefault(c => c.Type == "UserId");
-			string returnUrl = "https://localhost:7223/index";
+			string returnUrl = "https://localhost:7224/index";
 			var searchingForUser = GetUser(Convert.ToInt32(retrievingClaims.Value));
 			User user = new()
 			{

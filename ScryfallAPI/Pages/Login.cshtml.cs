@@ -27,7 +27,7 @@ namespace ScryfallAPI.Pages
             {
                 string? emailFromInput = Request.Form["emailaddress"];
                 AuthenticateUser authenticateUser = new(_context);
-				string returnUrl = "https://localhost:7223/index";
+				string returnUrl = "https://localhost:7224/index";
 
                 if (emailFromInput is not null)
                 {
@@ -50,7 +50,7 @@ namespace ScryfallAPI.Pages
 
 						IsPersistent = true,
 
-						RedirectUri = "https://localhost:7223/index"
+						RedirectUri = "https://localhost:7224/index"
 					};
 
 					await HttpContext.SignInAsync(
